@@ -54,7 +54,7 @@ public class SeleniumTestTati extends Functions {
 	public void openNewsletter() {
 		System.out.println("Starting test " + new Object() {
 		}.getClass().getEnclosingMethod().getName());
-		
+
 		deletDiv(driver, "'#cookies_block_footer'");
 
 		driver.findElement(By.xpath("//html/body/div[3]/div[5]/a[2]")).click();
@@ -87,13 +87,16 @@ public class SeleniumTestTati extends Functions {
 		driver.findElement(By.xpath("//*[@id=\"newsletterPrenom\"]")).sendKeys(prenom);
 
 		// jour
-		driver.findElement(By.xpath("//*[@id=\"newsletterDatenaisJ\"]")).sendKeys(getValueFromDropDown(driver, "//*[@id=\"newsletterDatenaisJ\"]"));
+		driver.findElement(By.xpath("//*[@id=\"newsletterDatenaisJ\"]"))
+				.sendKeys(getValueFromDropDown(driver, "//*[@id=\"newsletterDatenaisJ\"]"));
 
 		// mois
-		driver.findElement(By.xpath("//*[@id=\"newsletterDatenaisM\"]")).sendKeys(getValueFromDropDown(driver, "//*[@id=\"newsletterDatenaisM\"]"));
+		driver.findElement(By.xpath("//*[@id=\"newsletterDatenaisM\"]"))
+				.sendKeys(getValueFromDropDown(driver, "//*[@id=\"newsletterDatenaisM\"]"));
 
 		// annee
-		driver.findElement(By.xpath("//*[@id=\"newsletterDatenaisA\"]")).sendKeys(getValueFromDropDown(driver, "//*[@id=\"newsletterDatenaisA\"]"));
+		driver.findElement(By.xpath("//*[@id=\"newsletterDatenaisA\"]"))
+				.sendKeys(getValueFromDropDown(driver, "//*[@id=\"newsletterDatenaisA\"]"));
 
 		// e-mail
 		driver.findElement(By.xpath("//*[@id=\"newsletterMail\"]")).sendKeys(nom + "." + prenom + "@gmail.com");
@@ -103,7 +106,7 @@ public class SeleniumTestTati extends Functions {
 
 		deletDiv(driver, "'#barre_bas_fixe'");
 
-		//valid
+		// valid
 		driver.findElement(By.xpath("//*[@id=\"btn_news\"]")).click();
 
 		System.out.println("Ending test " + new Object() {
