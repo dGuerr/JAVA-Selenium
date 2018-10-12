@@ -13,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -25,12 +26,34 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 @SuppressWarnings("unused")
 public class SeleniumTestTati extends Functions {
 
-	private static FirefoxDriver driver;
-	WebElement element;
+	private static WebDriver driver = Choix_Browser("Firefox");
+	private WebElement element;
+
+	public SeleniumTestTati() {
+
+	}
+
+	public WebDriver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(WebDriver driver) {
+		SeleniumTestTati.driver = driver;
+	}
+
+
+	public WebElement getElement() {
+		return element;
+	}
+
+
+	public void setElement(WebElement element) {
+		this.element = element;
+	}
 
 	@BeforeClass
 	public static void openBrowser() {
-		driver = new FirefoxDriver();
+		SeleniumTestTati.driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
@@ -41,7 +64,7 @@ public class SeleniumTestTati extends Functions {
 		fillingNewletter();
 	}
 
-	public void openTati() {
+	public static void openTati() {
 		System.out.println("Starting test " + new Object() {
 		}.getClass().getEnclosingMethod().getName());
 
@@ -51,7 +74,7 @@ public class SeleniumTestTati extends Functions {
 		}.getClass().getEnclosingMethod().getName());
 	}
 
-	public void openNewsletter() {
+	public static void openNewsletter() {
 		System.out.println("Starting test " + new Object() {
 		}.getClass().getEnclosingMethod().getName());
 
@@ -63,7 +86,7 @@ public class SeleniumTestTati extends Functions {
 		}.getClass().getEnclosingMethod().getName());
 	}
 
-	public void fillingNewletter() throws InterruptedException {
+	public static void fillingNewletter() throws InterruptedException {
 		System.out.println("Starting test " + new Object() {
 		}.getClass().getEnclosingMethod().getName());
 
