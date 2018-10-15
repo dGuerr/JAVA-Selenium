@@ -1,9 +1,13 @@
 package Selenium;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +23,7 @@ import org.openqa.selenium.support.ui.Select;
 abstract class Functions {
 
 	/**
-	 * Get a random value from a dropdonw
+	 * Get a random value from a dropdown
 	 * 
 	 * @param driver
 	 * @param xPath
@@ -89,6 +93,7 @@ abstract class Functions {
 	 * 
 	 * @return driver
 	 */
+	@SuppressWarnings("deprecation")
 	public static WebDriver Browser_IE() {
 		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, "IE");
@@ -111,5 +116,29 @@ abstract class Functions {
 		chromeOpt.setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
 		WebDriver driver = new ChromeDriver(chromeOpt);
 		return driver;
+	}
+
+	public static void clickOnItem(WebDriver driver, String xPath) {
+		driver.findElement(By.xpath("" + xPath + "")).click();
+	}
+	
+	/**
+	 * Open and read a file, and return the lines in the file as a list of Strings.
+	 */
+	public static List<String> readFile(String filename) {
+		List<String> records = new ArrayList<String>();
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(filename));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				records.add(line);
+			}
+			reader.close();
+			return records;
+		} catch (Exception e) {
+			System.err.format("Exception occurred trying to read '%s'.", filename);
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
