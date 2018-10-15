@@ -54,8 +54,8 @@ public class SeleniumTestOC extends Functions {
 
 	@BeforeClass
 	public static void openBrowser() {
-		// SeleniumTestOC.driver = new FirefoxDriver();
-		// driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		 SeleniumTestOC.driver = new FirefoxDriver();
+		 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	@Test
